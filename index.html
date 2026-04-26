@@ -10,10 +10,9 @@ body{
   margin:0;
   background:black;
   color:white;
-  font-family:Garamond, serif;
 }
 
-/* INTRO */
+/* INTRO (logo principal mantiene tipografía elegante) */
 .intro{
   position:fixed;
   top:0;
@@ -37,16 +36,18 @@ body{
 }
 
 #logo{
+  font-family:Garamond, serif;
   font-size:16px;
   letter-spacing:4px;
   white-space:nowrap;
   opacity:0.95;
 }
 
-/* CONTENIDO */
+/* WEB (tipografía consola) */
 .main{
   display:none;
   opacity:0;
+  font-family:Consolas,"Courier New",monospace;
 }
 
 /* HEADER */
@@ -55,23 +56,23 @@ body{
   top:0;
   left:0;
   width:100%;
-  padding:20px;
-  z-index:100;
+  padding:22px 24px;
+  box-sizing:border-box;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  box-sizing:border-box;
-  background:rgba(0,0,0,0.75);
+  z-index:100;
 }
 
 .brand{
-  font-size:12px;
-  letter-spacing:8px;
+  font-size:11px;
+  letter-spacing:6px;
+  opacity:0.9;
 }
 
-/* HAMBURGUESA */
+/* MENU ICON */
 .menu-btn{
-  width:28px;
+  width:24px;
   cursor:pointer;
 }
 
@@ -79,19 +80,19 @@ body{
   display:block;
   height:1px;
   background:white;
-  margin:7px 0;
+  margin:6px 0;
   opacity:0.8;
 }
 
-/* MENÚ LATERAL */
+/* MENU */
 .side-menu{
   position:fixed;
   top:0;
-  right:-260px;
-  width:260px;
+  right:-280px;
+  width:280px;
   height:100vh;
   background:black;
-  z-index:200;
+  z-index:300;
   padding:120px 40px;
   box-sizing:border-box;
   transition:0.5s ease;
@@ -105,9 +106,10 @@ body{
   display:block;
   color:white;
   text-decoration:none;
-  margin-bottom:28px;
-  font-size:18px;
-  opacity:0.6;
+  margin-bottom:26px;
+  font-size:14px;
+  letter-spacing:2px;
+  opacity:0.55;
   transition:0.3s;
 }
 
@@ -116,35 +118,32 @@ body{
   opacity:1;
 }
 
-/* PÁGINAS */
+/* PAGES */
 .page{
   display:none;
-  padding:110px 20px 60px;
   min-height:100vh;
+  padding:90px 0 40px;
 }
 
 .page.active{
   display:block;
 }
 
-/* HERO */
 .hero{
-  height:70vh;
+  height:100vh;
   background:url('7.jpeg') center/cover no-repeat;
-  margin-bottom:30px;
 }
 
-/* TEXTO */
 .text{
-  max-width:600px;
-  margin:auto;
+  max-width:620px;
+  margin:70px auto;
+  padding:0 25px;
   text-align:center;
-  line-height:1.8;
-  font-size:15px;
-  opacity:0.7;
+  line-height:2;
+  font-size:13px;
+  opacity:0.65;
 }
 
-/* GALERÍAS */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -152,7 +151,7 @@ body{
 
 .grid img{
   width:100%;
-  height:320px;
+  height:340px;
   object-fit:cover;
 }
 
@@ -160,12 +159,13 @@ body{
 @media (max-width:700px){
 
   #logo{
-    font-size:14px;
+    font-size:13px;
     letter-spacing:3px;
   }
 
   .brand{
-    font-size:11px;
+    font-size:10px;
+    letter-spacing:4px;
   }
 
   .grid{
@@ -173,12 +173,13 @@ body{
   }
 
   .grid img{
-    height:420px;
+    height:440px;
   }
 
   .side-menu{
     width:220px;
     right:-220px;
+    padding:110px 30px;
   }
 }
 </style>
@@ -186,7 +187,6 @@ body{
 
 <body>
 
-<!-- AUDIO -->
 <audio id="bgmusic" loop>
 <source src="ambient.mp3" type="audio/mpeg">
 </audio>
@@ -199,8 +199,8 @@ body{
 <!-- WEB -->
 <div class="main" id="main">
 
-<!-- HEADER -->
 <div class="header">
+
 <div class="brand">ABSOLUTO</div>
 
 <div class="menu-btn" onclick="toggleMenu()">
@@ -208,29 +208,27 @@ body{
 <span></span>
 <span></span>
 </div>
+
 </div>
 
-<!-- MENÚ -->
 <div class="side-menu" id="sideMenu">
-<a href="#" class="active" onclick="showPage('about',this)">Acerca</a>
-<a href="#" onclick="showPage('process',this)">Procesos</a>
-<a href="#" onclick="showPage('gallery',this)">Galería</a>
+<a href="#" class="active" onclick="showPage('about',this)">ACERCA</a>
+<a href="#" onclick="showPage('process',this)">PROCESOS</a>
+<a href="#" onclick="showPage('gallery',this)">GALERÍA</a>
 </div>
 
-<!-- ACERCA -->
 <section id="about" class="page active">
 <div class="hero"></div>
 
 <div class="text">
-Absoluto Projects es una exploración de identidad,
+ABSOLUTO PROJECTS explora identidad,
 anonimato y transformación.<br><br>
 
-La prenda como contenedor.<br>
-El proceso como lenguaje.
+No es una marca tradicional.<br>
+Es una estructura visual en evolución.
 </div>
 </section>
 
-<!-- PROCESOS -->
 <section id="process" class="page">
 <div class="grid">
 <img src="7.jpeg">
@@ -240,7 +238,6 @@ El proceso como lenguaje.
 </div>
 </section>
 
-<!-- GALERÍA -->
 <section id="gallery" class="page">
 <div class="grid">
 <img src="IMG_0587.jpeg">
@@ -253,7 +250,6 @@ El proceso como lenguaje.
 </div>
 
 <script>
-/* INTRO */
 function enterSite(){
 
 const intro = document.querySelector(".intro");
@@ -277,12 +273,10 @@ main.style.opacity="1";
 },1800);
 }
 
-/* MENÚ */
 function toggleMenu(){
 document.getElementById("sideMenu").classList.toggle("open");
 }
 
-/* PÁGINAS */
 function showPage(id,el){
 
 document.querySelectorAll('.page').forEach(p=>{
@@ -300,7 +294,7 @@ el.classList.add('active');
 document.getElementById("sideMenu").classList.remove("open");
 }
 
-/* SCRAMBLE */
+/* SCRAMBLE INTRO */
 const glyphs = [
 "𓂀","☿","☽","☉","†","‡","✦","ᛟ","ᚨ","ᛉ",
 "✠","⚶","⌘","⟁","☍","☌","✢","✣","✥","✧"
