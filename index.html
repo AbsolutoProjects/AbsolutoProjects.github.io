@@ -12,7 +12,7 @@ body{
   color:white;
 }
 
-/* INTRO (logo principal mantiene tipografía elegante) */
+/* INTRO */
 .intro{
   position:fixed;
   top:0;
@@ -43,14 +43,14 @@ body{
   opacity:0.95;
 }
 
-/* WEB (tipografía consola) */
+/* WEB */
 .main{
   display:none;
   opacity:0;
   font-family:Consolas,"Courier New",monospace;
 }
 
-/* HEADER */
+/* HEADER TRANSPARENTE */
 .header{
   position:fixed;
   top:0;
@@ -62,15 +62,17 @@ body{
   justify-content:space-between;
   align-items:center;
   z-index:100;
+  background:transparent;
 }
 
 .brand{
   font-size:11px;
   letter-spacing:6px;
   opacity:0.9;
+  cursor:pointer;
 }
 
-/* MENU ICON */
+/* MENU */
 .menu-btn{
   width:24px;
   cursor:pointer;
@@ -84,7 +86,6 @@ body{
   opacity:0.8;
 }
 
-/* MENU */
 .side-menu{
   position:fixed;
   top:0;
@@ -110,40 +111,53 @@ body{
   font-size:14px;
   letter-spacing:2px;
   opacity:0.55;
-  transition:0.3s;
 }
 
-.side-menu a:hover,
 .side-menu a.active{
   opacity:1;
 }
 
-/* PAGES */
+/* PAGINAS */
 .page{
   display:none;
   min-height:100vh;
-  padding:90px 0 40px;
+  padding:0 0 40px;
 }
 
 .page.active{
   display:block;
 }
 
-.hero{
+/* BLOQUES */
+.section-block{
+  margin-top:0;
+}
+
+.section-block img{
+  width:100%;
   height:100vh;
-  background:url('7.jpeg') center/cover no-repeat;
+  object-fit:cover;
+  display:block;
 }
 
-.text{
-  max-width:620px;
-  margin:70px auto;
-  padding:0 25px;
-  text-align:center;
-  line-height:2;
+.box-wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.box{
+  border:1px solid rgba(255,255,255,.10);
+  padding:24px;
+  line-height:1.9;
   font-size:13px;
-  opacity:0.65;
+  opacity:0.72;
 }
 
+/* GALERIA */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -151,7 +165,7 @@ body{
 
 .grid img{
   width:100%;
-  height:340px;
+  height:100vh;
   object-fit:cover;
 }
 
@@ -168,12 +182,18 @@ body{
     letter-spacing:4px;
   }
 
-  .grid{
+  .box-wrap{
     grid-template-columns:1fr;
+    padding:18px;
   }
 
+  .section-block img,
   .grid img{
-    height:440px;
+    height:100vh;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
   }
 
   .side-menu{
@@ -199,9 +219,10 @@ body{
 <!-- WEB -->
 <div class="main" id="main">
 
+<!-- HEADER -->
 <div class="header">
 
-<div class="brand">ABSOLUTO</div>
+<div class="brand" onclick="showPageDirect('about')">ABSOLUTO</div>
 
 <div class="menu-btn" onclick="toggleMenu()">
 <span></span>
@@ -211,32 +232,89 @@ body{
 
 </div>
 
+<!-- MENU -->
 <div class="side-menu" id="sideMenu">
 <a href="#" class="active" onclick="showPage('about',this)">ACERCA</a>
 <a href="#" onclick="showPage('process',this)">PROCESOS</a>
 <a href="#" onclick="showPage('gallery',this)">GALERÍA</a>
 </div>
 
+<!-- ACERCA -->
 <section id="about" class="page active">
-<div class="hero"></div>
 
-<div class="text">"La oscuridad es un lugar de conciencia donde existe poesía sensibilidad, belleza y capacidad.".<br><br>
-
-La proyección nace a partir de una experiencia post-traumática como la muerte que marcó profundamente el origen de su visión. Surge desde la reflexión sobre la pérdida, el valor del tiempo y la necesidad de comunicar antes de su fin. Desde ese punto, la moda se convierte en solo un medio para expresar procesos internos, aprendizajes y preguntas sobre la vida.
-Absoluto no fue pensado para vestir, ni para verse esbelto, fue creado para conectar con las emociones en las personas, Es un homenaje al significado de los vínculos, la lealtad y la capacidad del amor en permanecer y transformarse en algo perpetuo.
-
-</div>
-</section>
-
-<section id="process" class="page">
-<div class="grid">
+<div class="section-block">
 <img src="7.jpeg">
-<img src="IMG_0587.jpeg">
-<img src="IMG_5847.jpeg">
-<img src="IMG_5941.jpeg">
+
+<div class="box-wrap">
+<div class="box">
+ABSOLUTO PROJECTS explora identidad,
+anonimato y transformación.
 </div>
+
+<div class="box">
+No es una marca tradicional.<br>
+Es una estructura visual en evolución.
+</div>
+</div>
+</div>
+
+<div class="section-block">
+<img src="IMG_0587.jpeg">
+
+<div class="box-wrap">
+<div class="box">
+Presencia sin rostro.<br>
+Forma sin autor.
+</div>
+
+<div class="box">
+El silencio como lenguaje.<br>
+La materia como voz.
+</div>
+</div>
+</div>
+
 </section>
 
+<!-- PROCESOS -->
+<section id="process" class="page">
+
+<div class="section-block">
+<img src="IMG_5847.jpeg">
+
+<div class="box-wrap">
+<div class="box">
+Fibra de carbono, resinas,
+capas estructurales y ligereza extrema.
+</div>
+
+<div class="box">
+Prueba, error y repetición
+como método de creación.
+</div>
+</div>
+</div>
+
+<div class="section-block">
+<img src="IMG_5941.jpeg">
+
+<div class="box-wrap">
+<div class="box">
+Óxidos, hierro, cera,
+huesos e intervención clínica.
+</div>
+
+<div class="box">
+Siluetas nuevas,
+texturas vivas,
+materia en evolución.
+</div>
+</div>
+</div>
+
+</section>
+
+<!-- GALERIA -->
 <section id="gallery" class="page">
 <div class="grid">
 <img src="IMG_0587.jpeg">
@@ -291,6 +369,21 @@ a.classList.remove('active');
 el.classList.add('active');
 
 document.getElementById("sideMenu").classList.remove("open");
+}
+
+function showPageDirect(id){
+
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
+
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('.side-menu a').forEach(a=>{
+a.classList.remove('active');
+});
+
+document.querySelector('.side-menu a').classList.add('active');
 }
 
 /* SCRAMBLE INTRO */
