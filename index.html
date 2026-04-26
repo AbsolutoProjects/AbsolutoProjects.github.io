@@ -10,7 +10,7 @@ body{
   margin:0;
   background:black;
   color:white;
-  font-family: Garamond, serif;
+  font-family:Garamond, serif;
 }
 
 /* INTRO */
@@ -30,11 +30,12 @@ body{
 }
 
 #logo{
-  font-size:8px;
-  letter-spacing:8px;
+  font-size:14px;
+  letter-spacing:4px;
   line-height:1.8;
   opacity:0.95;
   padding:20px;
+  white-space:nowrap;
 }
 
 /* CONTENIDO REAL */
@@ -81,9 +82,10 @@ body{
 
 /* móvil */
 @media (max-width:700px){
+
   #logo{
-    font-size:14px;
-    letter-spacing:5px;
+    font-size:12px;
+    letter-spacing:3px;
   }
 
   .grid{
@@ -101,7 +103,7 @@ body{
 
 <!-- INTRO -->
 <div class="intro" onclick="enterSite()">
-  <div id="logo">ABSOLUTO<br>PROJECTS</div>
+  <div id="logo">ABSOLUTO PROJECTS</div>
 </div>
 
 <!-- WEB -->
@@ -132,7 +134,7 @@ function enterSite(){
   document.getElementById("main").style.display="block";
 }
 
-/* SCRAMBLE MÍSTICO SOLO TIPOGRÁFICO */
+/* SCRAMBLE MÍSTICO */
 const glyphs = [
 "𓂀","☿","☽","☉","†","‡","✦","ᛟ","ᚨ","ᛉ",
 "✠","⚶","⌘","⟁","☍","☌","✢","✣","✥","✧"
@@ -155,8 +157,7 @@ const interval = setInterval(() => {
 
   }).join("");
 
-  document.getElementById("logo").innerHTML =
-    output.replace("PROJECTS","<br>PROJECTS");
+  document.getElementById("logo").innerHTML = output;
 
   if(iteration >= target.length){
     clearInterval(interval);
