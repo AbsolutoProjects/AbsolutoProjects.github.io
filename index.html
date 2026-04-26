@@ -12,14 +12,18 @@ body{
   color:white;
 }
 
-/* INTRO */
+/* INTRO (logo principal mantiene tipografía elegante) */
 .intro{
   position:fixed;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
   background:black;
   display:flex;
   justify-content:center;
   align-items:center;
+  text-align:center;
   z-index:9999;
   cursor:pointer;
   opacity:1;
@@ -35,10 +39,11 @@ body{
   font-family:Garamond, serif;
   font-size:16px;
   letter-spacing:4px;
-  opacity:.95;
+  white-space:nowrap;
+  opacity:0.95;
 }
 
-/* WEB */
+/* WEB (tipografía consola) */
 .main{
   display:none;
   opacity:0;
@@ -62,9 +67,10 @@ body{
 .brand{
   font-size:11px;
   letter-spacing:6px;
-  cursor:pointer;
+  opacity:0.9;
 }
 
+/* MENU ICON */
 .menu-btn{
   width:24px;
   cursor:pointer;
@@ -75,6 +81,7 @@ body{
   height:1px;
   background:white;
   margin:6px 0;
+  opacity:0.8;
 }
 
 /* MENU */
@@ -88,7 +95,7 @@ body{
   z-index:300;
   padding:120px 40px;
   box-sizing:border-box;
-  transition:.45s ease;
+  transition:0.5s ease;
 }
 
 .side-menu.open{
@@ -102,60 +109,41 @@ body{
   margin-bottom:26px;
   font-size:14px;
   letter-spacing:2px;
-  opacity:.55;
+  opacity:0.55;
+  transition:0.3s;
 }
 
+.side-menu a:hover,
 .side-menu a.active{
   opacity:1;
 }
 
-/* PAGINAS */
+/* PAGES */
 .page{
   display:none;
   min-height:100vh;
-  padding:90px 0 50px;
+  padding:90px 0 40px;
 }
 
 .page.active{
   display:block;
 }
 
-/* HERO */
 .hero{
   height:100vh;
   background:url('7.jpeg') center/cover no-repeat;
 }
 
-/* BLOQUES */
-.section-block{
-  margin-top:30px;
-}
-
-.section-block img{
-  width:100%;
-  height:420px;
-  object-fit:cover;
-  display:block;
-}
-
-.box-wrap{
-  max-width:1100px;
-  margin:0 auto;
-  padding:25px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.box{
-  border:1px solid rgba(255,255,255,.12);
-  padding:24px;
-  line-height:1.9;
+.text{
+  max-width:620px;
+  margin:70px auto;
+  padding:0 25px;
+  text-align:center;
+  line-height:2;
   font-size:13px;
-  opacity:.72;
+  opacity:0.65;
 }
 
-/* GALERIA */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -163,11 +151,11 @@ body{
 
 .grid img{
   width:100%;
-  height:360px;
+  height:340px;
   object-fit:cover;
 }
 
-/* MOBILE */
+/* móvil */
 @media (max-width:700px){
 
   #logo{
@@ -180,18 +168,12 @@ body{
     letter-spacing:4px;
   }
 
-  .box-wrap{
-    grid-template-columns:1fr;
-    padding:18px;
-  }
-
-  .section-block img,
-  .grid img{
-    height:420px;
-  }
-
   .grid{
     grid-template-columns:1fr;
+  }
+
+  .grid img{
+    height:440px;
   }
 
   .side-menu{
@@ -217,10 +199,9 @@ body{
 <!-- WEB -->
 <div class="main" id="main">
 
-<!-- HEADER -->
 <div class="header">
 
-<div class="brand" onclick="showPageDirect('home')">ABSOLUTO</div>
+<div class="brand">ABSOLUTO</div>
 
 <div class="menu-btn" onclick="toggleMenu()">
 <span></span>
@@ -230,108 +211,33 @@ body{
 
 </div>
 
-<!-- MENU -->
 <div class="side-menu" id="sideMenu">
-<a href="#" class="active" onclick="showPage('home',this)">INICIO</a>
-<a href="#" onclick="showPage('about',this)">ACERCA</a>
+<a href="#" class="active" onclick="showPage('about',this)">ACERCA</a>
 <a href="#" onclick="showPage('process',this)">PROCESOS</a>
 <a href="#" onclick="showPage('gallery',this)">GALERÍA</a>
 </div>
 
-<!-- HOME -->
-<section id="home" class="page active">
+<section id="about" class="page active">
 <div class="hero"></div>
 
-<div class="box-wrap">
-<div class="box">
-ABSOLUTO PROJECTS es una exploración de identidad,
-materia y silencio visual.
-</div>
+<div class="text">
+ABSOLUTO PROJECTS explora identidad,
+anonimato y transformación.<br><br>
 
-<div class="box">
-Cada pieza nace del ensayo,
-error,
-transformación
-y búsqueda interna.
-</div>
+No es una marca tradicional.<br>
+Es una estructura visual en evolución.
 </div>
 </section>
 
-<!-- ACERCA -->
-<section id="about" class="page">
-
-<div class="section-block">
-<img src="IMG_0587.jpeg">
-
-<div class="box-wrap">
-<div class="box">
-Acerca de una visión anónima.<br>
-La forma supera al autor.
-</div>
-
-<div class="box">
-No se busca reconocimiento,
-se busca lenguaje propio.
-</div>
-</div>
-</div>
-
-<div class="section-block">
-<img src="IMG_5941.jpeg">
-
-<div class="box-wrap">
-<div class="box">
-Moda como contenedor emocional.
-</div>
-
-<div class="box">
-Presencia sin rostro.<br>
-Firma sin figura.
-</div>
-</div>
-</div>
-
-</section>
-
-<!-- PROCESOS -->
 <section id="process" class="page">
-
-<div class="section-block">
+<div class="grid">
 <img src="7.jpeg">
-
-<div class="box-wrap">
-<div class="box">
-Fibra de carbono, resinas,
-capas estructurales,
-ligereza extrema.
-</div>
-
-<div class="box">
-Investigación material nacida de prueba y error.
-</div>
-</div>
-</div>
-
-<div class="section-block">
+<img src="IMG_0587.jpeg">
 <img src="IMG_5847.jpeg">
-
-<div class="box-wrap">
-<div class="box">
-Óxidos, hierro, cera,
-huesos, intervención clínica.
+<img src="IMG_5941.jpeg">
 </div>
-
-<div class="box">
-Siluetas nuevas,
-superficies vivas,
-materia en evolución.
-</div>
-</div>
-</div>
-
 </section>
 
-<!-- GALERIA -->
 <section id="gallery" class="page">
 <div class="grid">
 <img src="IMG_0587.jpeg">
@@ -388,16 +294,10 @@ el.classList.add('active');
 document.getElementById("sideMenu").classList.remove("open");
 }
 
-function showPageDirect(id){
-document.querySelectorAll('.page').forEach(p=>{
-p.classList.remove('active');
-});
-document.getElementById(id).classList.add('active');
-}
-
-/* SCRAMBLE */
+/* SCRAMBLE INTRO */
 const glyphs = [
-"†","‡","§","¶","✦","✧","⌘","∆","⊕","⋆"
+"𓂀","☿","☽","☉","†","‡","✦","ᛟ","ᚨ","ᛉ",
+"✠","⚶","⌘","⟁","☍","☌","✢","✣","✥","✧"
 ];
 
 const target = "ABSOLUTO PROJECTS";
@@ -409,7 +309,9 @@ const output = target.split("").map((char,index)=>{
 
 if(char===" ") return " ";
 
-if(index < iteration) return target[index];
+if(index < iteration){
+return target[index];
+}
 
 return glyphs[Math.floor(Math.random()*glyphs.length)];
 
