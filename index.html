@@ -55,42 +55,71 @@ body{
   top:0;
   left:0;
   width:100%;
-  background:rgba(0,0,0,0.85);
+  padding:20px;
   z-index:100;
-  padding:18px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-sizing:border-box;
+  background:rgba(0,0,0,0.75);
 }
 
 .brand{
-  text-align:center;
   font-size:12px;
   letter-spacing:8px;
-  margin-bottom:12px;
 }
 
-/* MENU */
-.menu{
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  font-size:13px;
+/* HAMBURGUESA */
+.menu-btn{
+  width:28px;
+  cursor:pointer;
 }
 
-.menu a{
+.menu-btn span{
+  display:block;
+  height:1px;
+  background:white;
+  margin:7px 0;
+  opacity:0.8;
+}
+
+/* MENÚ LATERAL */
+.side-menu{
+  position:fixed;
+  top:0;
+  right:-260px;
+  width:260px;
+  height:100vh;
+  background:black;
+  z-index:200;
+  padding:120px 40px;
+  box-sizing:border-box;
+  transition:0.5s ease;
+}
+
+.side-menu.open{
+  right:0;
+}
+
+.side-menu a{
+  display:block;
   color:white;
   text-decoration:none;
-  opacity:0.55;
+  margin-bottom:28px;
+  font-size:18px;
+  opacity:0.6;
   transition:0.3s;
 }
 
-.menu a:hover,
-.menu a.active{
+.side-menu a:hover,
+.side-menu a.active{
   opacity:1;
 }
 
-/* SECCIONES */
+/* PÁGINAS */
 .page{
   display:none;
-  padding:140px 20px 80px;
+  padding:110px 20px 60px;
   min-height:100vh;
 }
 
@@ -115,16 +144,13 @@ body{
   opacity:0.7;
 }
 
-/* PROCESOS */
-.process-grid,
-.gallery-grid{
+/* GALERÍAS */
+.grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:0;
 }
 
-.process-grid img,
-.gallery-grid img{
+.grid img{
   width:100%;
   height:320px;
   object-fit:cover;
@@ -138,23 +164,21 @@ body{
     letter-spacing:3px;
   }
 
-  .menu{
-    gap:16px;
-    font-size:12px;
+  .brand{
+    font-size:11px;
   }
 
-  .process-grid,
-  .gallery-grid{
+  .grid{
     grid-template-columns:1fr;
   }
 
-  .process-grid img,
-  .gallery-grid img{
+  .grid img{
     height:420px;
   }
 
-  .text{
-    font-size:14px;
+  .side-menu{
+    width:220px;
+    right:-220px;
   }
 }
 </style>
@@ -164,12 +188,12 @@ body{
 
 <!-- AUDIO -->
 <audio id="bgmusic" loop>
-  <source src="ambient.mp3" type="audio/mpeg">
+<source src="ambient.mp3" type="audio/mpeg">
 </audio>
 
 <!-- INTRO -->
 <div class="intro" onclick="enterSite()">
-  <div id="logo">ABSOLUTO PROJECTS</div>
+<div id="logo">ABSOLUTO PROJECTS</div>
 </div>
 
 <!-- WEB -->
@@ -177,95 +201,103 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <div class="brand">ABSOLUTO</div>
+<div class="brand">ABSOLUTO</div>
 
-  <div class="menu">
-    <a href="#" class="active" onclick="showPage('about',this)">Acerca</a>
-    <a href="#" onclick="showPage('process',this)">Procesos</a>
-    <a href="#" onclick="showPage('gallery',this)">Galería</a>
-  </div>
+<div class="menu-btn" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+
+<!-- MENÚ -->
+<div class="side-menu" id="sideMenu">
+<a href="#" class="active" onclick="showPage('about',this)">Acerca</a>
+<a href="#" onclick="showPage('process',this)">Procesos</a>
+<a href="#" onclick="showPage('gallery',this)">Galería</a>
 </div>
 
 <!-- ACERCA -->
 <section id="about" class="page active">
-  <div class="hero"></div>
+<div class="hero"></div>
 
-  <div class="text">
-    Absoluto Projects es una exploración del anonimato,
-    la transformación y la forma.<br><br>
+<div class="text">
+Absoluto Projects es una exploración de identidad,
+anonimato y transformación.<br><br>
 
-    No es una marca tradicional.<br>
-    Es una plataforma de procesos internos
-    convertidos en materia.
-  </div>
+La prenda como contenedor.<br>
+El proceso como lenguaje.
+</div>
 </section>
 
 <!-- PROCESOS -->
 <section id="process" class="page">
-  <div class="process-grid">
-    <img src="7.jpeg">
-    <img src="IMG_0587.jpeg">
-    <img src="IMG_5847.jpeg">
-    <img src="IMG_5941.jpeg">
-  </div>
-
-  <div class="text" style="margin-top:30px;">
-    Texturas, desgaste, estructura,
-    investigación y evolución constante.
-  </div>
+<div class="grid">
+<img src="7.jpeg">
+<img src="IMG_0587.jpeg">
+<img src="IMG_5847.jpeg">
+<img src="IMG_5941.jpeg">
+</div>
 </section>
 
 <!-- GALERÍA -->
 <section id="gallery" class="page">
-  <div class="gallery-grid">
-    <img src="IMG_0587.jpeg">
-    <img src="IMG_5941.jpeg">
-    <img src="7.jpeg">
-    <img src="IMG_5847.jpeg">
-  </div>
+<div class="grid">
+<img src="IMG_0587.jpeg">
+<img src="IMG_5941.jpeg">
+<img src="7.jpeg">
+<img src="IMG_5847.jpeg">
+</div>
 </section>
 
 </div>
 
 <script>
-/* ENTRADA */
+/* INTRO */
 function enterSite(){
 
-  const intro = document.querySelector(".intro");
-  const main = document.getElementById("main");
-  const music = document.getElementById("bgmusic");
+const intro = document.querySelector(".intro");
+const main = document.getElementById("main");
+const music = document.getElementById("bgmusic");
 
-  music.volume = 0.15;
-  music.play();
+music.volume = 0.15;
+music.play();
 
-  intro.classList.add("fadeout");
+intro.classList.add("fadeout");
 
-  setTimeout(() => {
-    intro.style.display="none";
-    main.style.display="block";
+setTimeout(()=>{
+intro.style.display="none";
+main.style.display="block";
 
-    setTimeout(()=>{
-      main.style.transition="opacity 2s ease";
-      main.style.opacity="1";
-    },50);
+setTimeout(()=>{
+main.style.transition="opacity 2s ease";
+main.style.opacity="1";
+},50);
 
-  },1800);
+},1800);
 }
 
-/* MENÚ PÁGINAS */
+/* MENÚ */
+function toggleMenu(){
+document.getElementById("sideMenu").classList.toggle("open");
+}
+
+/* PÁGINAS */
 function showPage(id,el){
 
-  document.querySelectorAll('.page').forEach(p=>{
-    p.classList.remove('active');
-  });
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
 
-  document.getElementById(id).classList.add('active');
+document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('.menu a').forEach(a=>{
-    a.classList.remove('active');
-  });
+document.querySelectorAll('.side-menu a').forEach(a=>{
+a.classList.remove('active');
+});
 
-  el.classList.add('active');
+el.classList.add('active');
+
+document.getElementById("sideMenu").classList.remove("open");
 }
 
 /* SCRAMBLE */
@@ -277,11 +309,11 @@ const glyphs = [
 const target = "ABSOLUTO PROJECTS";
 let iteration = 0;
 
-const interval = setInterval(() => {
+const interval = setInterval(()=>{
 
 const output = target.split("").map((char,index)=>{
 
-if(char === " ") return " ";
+if(char===" ") return " ";
 
 if(index < iteration){
 return target[index];
