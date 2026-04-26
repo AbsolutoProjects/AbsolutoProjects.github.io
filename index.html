@@ -50,7 +50,7 @@ body{
   font-family:Consolas,"Courier New",monospace;
 }
 
-/* HEADER TRANSPARENTE */
+/* HEADER */
 .header{
   position:fixed;
   top:0;
@@ -129,10 +129,6 @@ body{
 }
 
 /* BLOQUES */
-.section-block{
-  margin-top:0;
-}
-
 .section-block img{
   width:100%;
   height:100vh;
@@ -140,20 +136,19 @@ body{
   display:block;
 }
 
-.box-wrap{
-  max-width:1100px;
+/* TEXTO SIN CAJAS */
+.text-wrap{
+  max-width:1000px;
   margin:0 auto;
-  padding:24px;
+  padding:40px 24px 10px;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:40px;
 }
 
-.box{
-  border:1px solid rgba(255,255,255,.10);
-  padding:24px;
-  line-height:1.9;
+.text-box{
   font-size:13px;
+  line-height:2;
   opacity:0.72;
 }
 
@@ -182,9 +177,10 @@ body{
     letter-spacing:4px;
   }
 
-  .box-wrap{
+  .text-wrap{
     grid-template-columns:1fr;
-    padding:18px;
+    gap:24px;
+    padding:28px 18px 0;
   }
 
   .section-block img,
@@ -219,9 +215,7 @@ body{
 <!-- WEB -->
 <div class="main" id="main">
 
-<!-- HEADER -->
 <div class="header">
-
 <div class="brand" onclick="showPageDirect('about')">ABSOLUTO</div>
 
 <div class="menu-btn" onclick="toggleMenu()">
@@ -229,7 +223,6 @@ body{
 <span></span>
 <span></span>
 </div>
-
 </div>
 
 <!-- MENU -->
@@ -244,33 +237,36 @@ body{
 
 <div class="section-block">
 <img src="7.jpeg">
-
-<div class="box-wrap">
-<div class="box">
-ABSOLUTO PROJECTS explora identidad,
-anonimato y transformación.
 </div>
 
-<div class="box">
-No es una marca tradicional.<br>
-Es una estructura visual en evolución.
+<div class="text-wrap">
+<div class="text-box">
+La oscuridad es el lugar de conciencia y fondo donde existe poesía, sensibilidad, belleza y capacidad.
 </div>
+
+<div class="text-box">
+La proyección nace a partir de la experiencia post-traumática como la muerte que distorsionó profundamente la visión. Surge desde la reflexión sobre la muerte, el valor del tiempo y la necesidad de comunicar antes de su fin.
 </div>
 </div>
 
-<div class="section-block">
-<img src="IMG_0587.jpeg">
+<div class="text-wrap">
+<div class="text-box">
+Desde ese punto, la moda se convierte en un medio para darle sentido a esa misma vida, a ese mismo tiempo.
+</div>
 
-<div class="box-wrap">
-<div class="box">
-Presencia sin rostro.<br>
+<div class="text-box">
+Absoluto no fue pensado para vestir, ni para verse esbelto; fue creado para conectar con las emociones en las personas.
+</div>
+</div>
+
+<div class="text-wrap">
+<div class="text-box">
+Es un homenaje al significado de los vínculos, la lealtad y la capacidad del amor en permanecer y transformarse en algo perpetuo.
+</div>
+
+<div class="text-box">
+Presencia sin rostro.  
 Forma sin autor.
-</div>
-
-<div class="box">
-El silencio como lenguaje.<br>
-La materia como voz.
-</div>
 </div>
 </div>
 
@@ -281,34 +277,29 @@ La materia como voz.
 
 <div class="section-block">
 <img src="IMG_5847.jpeg">
-
-<div class="box-wrap">
-<div class="box">
-Fibra de carbono, resinas,
-capas estructurales y ligereza extrema.
 </div>
 
-<div class="box">
-Prueba, error y repetición
-como método de creación.
+<div class="text-wrap">
+<div class="text-box">
+Fibra de carbono, resinas, capas estructurales y ligereza extrema.
 </div>
+
+<div class="text-box">
+Prueba, error y repetición como método de creación.
 </div>
 </div>
 
 <div class="section-block">
 <img src="IMG_5941.jpeg">
-
-<div class="box-wrap">
-<div class="box">
-Óxidos, hierro, cera,
-huesos e intervención clínica.
 </div>
 
-<div class="box">
-Siluetas nuevas,
-texturas vivas,
-materia en evolución.
+<div class="text-wrap">
+<div class="text-box">
+Óxidos, hierro, cera, huesos e intervención clínica.
 </div>
+
+<div class="text-box">
+Siluetas nuevas, texturas vivas, materia en evolución.
 </div>
 </div>
 
@@ -328,7 +319,6 @@ materia en evolución.
 
 <script>
 function enterSite(){
-
 const intro = document.querySelector(".intro");
 const main = document.getElementById("main");
 const music = document.getElementById("bgmusic");
@@ -355,38 +345,24 @@ document.getElementById("sideMenu").classList.toggle("open");
 }
 
 function showPage(id,el){
-
-document.querySelectorAll('.page').forEach(p=>{
-p.classList.remove('active');
-});
-
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 
-document.querySelectorAll('.side-menu a').forEach(a=>{
-a.classList.remove('active');
-});
-
+document.querySelectorAll('.side-menu a').forEach(a=>a.classList.remove('active'));
 el.classList.add('active');
 
 document.getElementById("sideMenu").classList.remove("open");
 }
 
 function showPageDirect(id){
-
-document.querySelectorAll('.page').forEach(p=>{
-p.classList.remove('active');
-});
-
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 
-document.querySelectorAll('.side-menu a').forEach(a=>{
-a.classList.remove('active');
-});
-
+document.querySelectorAll('.side-menu a').forEach(a=>a.classList.remove('active'));
 document.querySelector('.side-menu a').classList.add('active');
 }
 
-/* SCRAMBLE INTRO */
+/* SCRAMBLE */
 const glyphs = [
 "𓂀","☿","☽","☉","†","‡","✦","ᛟ","ᚨ","ᛉ",
 "✠","⚶","⌘","⟁","☍","☌","✢","✣","✥","✧"
@@ -396,25 +372,15 @@ const target = "ABSOLUTO PROJECTS";
 let iteration = 0;
 
 const interval = setInterval(()=>{
-
 const output = target.split("").map((char,index)=>{
-
 if(char===" ") return " ";
-
-if(index < iteration){
-return target[index];
-}
-
+if(index < iteration) return target[index];
 return glyphs[Math.floor(Math.random()*glyphs.length)];
-
 }).join("");
 
 document.getElementById("logo").innerHTML = output;
 
-if(iteration >= target.length){
-clearInterval(interval);
-}
-
+if(iteration >= target.length) clearInterval(interval);
 iteration += 0.33;
 
 },70);
