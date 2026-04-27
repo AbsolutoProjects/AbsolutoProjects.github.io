@@ -35,12 +35,22 @@ body{
   pointer-events:none;
 }
 
+/* LOGO FIXED CENTER */
 #logo{
-  font-family:Garamond, serif;
+  font-family:Consolas,"Courier New",monospace;
   font-size:16px;
   letter-spacing:4px;
-  white-space:nowrap;
   opacity:0.95;
+
+  width:420px;
+  max-width:90vw;
+  text-align:center;
+
+  white-space:nowrap;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:auto;
 }
 
 /* WEB */
@@ -170,6 +180,7 @@ body{
   #logo{
     font-size:13px;
     letter-spacing:3px;
+    width:92vw;
   }
 
   .brand{
@@ -215,9 +226,7 @@ body{
 <!-- WEB -->
 <div class="main" id="main">
 
-<!-- HEADER -->
 <div class="header">
-
 <div class="brand" onclick="showPageDirect('about')">ABSOLUTO</div>
 
 <div class="menu-btn" onclick="toggleMenu()">
@@ -225,7 +234,6 @@ body{
 <span></span>
 <span></span>
 </div>
-
 </div>
 
 <!-- MENU -->
@@ -250,86 +258,10 @@ body{
 <div class="text-box">
 La visión nace desde la reflexión sobre la muerte, el valor del tiempo y la necesidad de comunicar antes de su fin.
 
-Absoluto es, en esencia, una declaración de mi propia vida. aprendizajes, traumas, miedos e inseguridades, Es mi forma de decir “esto soy, esto descubro, a esto le temo y quiero compartirlo”.</div>
-</div>
-
-</section>
-
-<!-- PROCESOS -->
-<section id="process" class="page">
-
-<div class="section-block">
-<img src="fffadaf8-7d22-4917-9653-aadab4893577.jpeg">
-</div>
-
-<div class="text-wrap">
-<div class="text-box">
-Prueba, error, repetición, intervención.
-</div>
-
-<div class="text-box">
-Carbono, resinas, capas, estructuras.
+Absoluto es, en esencia, una declaración de mi propia vida. aprendizajes, traumas, miedos e inseguridades.
 </div>
 </div>
 
-<div class="section-block">
-<img src="IMG_7391.png">
-</div>
-
-<div class="text-wrap">
-<div class="text-box">
-Tratamiento industrial, Deconstrucion textil
-</div>
-
-<div class="text-box">
-"Diseño para encontrar el valor de la nostalgia en los recuerdos, pero
-para sincerarme más allá creo para encontrar sentido a mi vida y disolver todo lo que siento, me gustaría pensar que eso
-me da el propósito de ayudar a los demás y ver la fragilidad en los ojos de las personas..."
-</div>
-</div>
-
-<div class="section-block">
-<img src="3740d81f-5c7f-4fc8-b5da-2029c74203b7.jpeg">
-</div>
-
-<div class="text-wrap">
-<div class="text-box">
-Huesos, acero, oxidos, ceras.
-</div>
-
-<div class="text-box">
-Cueros, material sintetico y la transformación.
-</div>
-</div>
-
-<div class="section-block">
-<img src="historia3.jpeg">
-</div>
-
-<div class="text-wrap">
-<div class="text-box">
-  La forma nace del conflicto que existe contra los estandares impuestos y su belleza superficial, reconociendo belleza en lo imperfecto, asimetrico y corrosivo.
-</div>
-
-<div class="text-box">
-"Tan frágil termina siendo la humanidad que bajo toda tentación y circunstancia siempre elegimos amar."
-</div>
-</div>
-
-</section>
-
-<!-- GALERIA -->
-<section id="gallery" class="page">
-<div class="grid">
-<img src="4C53CC8C-C430-41D5-91A6-74F7D8185A2E.jpeg">
-<img src="IMG_5941.jpeg">
-<img src="IMG_0587.jpeg">
-<img src="IMG_5847.jpeg">
-<img src="IMG_6559.jpeg">
-<img src="edit jacket.jpeg">
-<img src="front.jpeg">
-<img src="historia (1).jpeg">
-</div>
 </section>
 
 </div>
@@ -340,7 +272,7 @@ const intro = document.querySelector(".intro");
 const main = document.getElementById("main");
 const music = document.getElementById("bgmusic");
 
-music.volume = 0.15;
+music.volume = 0.08;
 music.play();
 
 intro.classList.add("fadeout");
@@ -379,16 +311,17 @@ document.querySelectorAll('.side-menu a').forEach(a=>a.classList.remove('active'
 document.querySelector('.side-menu a').classList.add('active');
 }
 
-/* SCRAMBLE */
+/* SCRAMBLE ESTABLE */
 const glyphs = [
-"𓂀","☿","☽","☉","†","‡","✦","ᛟ","ᚨ","ᛉ",
-"✠","⚶","⌘","⟁","☍","☌","✢","✣","✥","✧"
+"†","‡","+","×","=","#","%","*","/","∆",
+"∴","∵","¦","|","•","·","⊕","⊗","⌘","✦"
 ];
 
 const target = "ABSOLUTO PROJECTS";
 let iteration = 0;
 
 const interval = setInterval(()=>{
+
 const output = target.split("").map((char,index)=>{
 if(char===" ") return " ";
 if(index < iteration) return target[index];
@@ -397,7 +330,11 @@ return glyphs[Math.floor(Math.random()*glyphs.length)];
 
 document.getElementById("logo").innerHTML = output;
 
-if(iteration >= target.length) clearInterval(interval);
+if(iteration >= target.length){
+clearInterval(interval);
+document.getElementById("logo").style.fontFamily = "Garamond, serif";
+}
+
 iteration += 0.33;
 
 },70);
