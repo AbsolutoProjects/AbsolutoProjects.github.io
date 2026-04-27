@@ -35,9 +35,9 @@ body{
   pointer-events:none;
 }
 
-/* LOGO FIXED CENTER */
+/* LOGO INTRO */
 #logo{
-  font-family:Consolas,"Courier New",monospace;
+  font-family:Baskerville,"Times New Roman",serif;
   font-size:16px;
   letter-spacing:4px;
   opacity:0.95;
@@ -51,6 +51,9 @@ body{
   justify-content:center;
   align-items:center;
   margin:auto;
+
+  font-variant-ligatures:none;
+  font-feature-settings:"liga" 0;
 }
 
 /* WEB */
@@ -257,11 +260,38 @@ body{
 
 <div class="text-box">
 La visión nace desde la reflexión sobre la muerte, el valor del tiempo y la necesidad de comunicar antes de su fin.
-
-Absoluto es, en esencia, una declaración de mi propia vida. aprendizajes, traumas, miedos e inseguridades.
 </div>
 </div>
 
+</section>
+
+<!-- PROCESOS -->
+<section id="process" class="page">
+
+<div class="section-block">
+<img src="fffadaf8-7d22-4917-9653-aadab4893577.jpeg">
+</div>
+
+<div class="text-wrap">
+<div class="text-box">
+Prueba, error, repetición, intervención.
+</div>
+
+<div class="text-box">
+Carbono, resinas, capas, estructuras.
+</div>
+</div>
+
+</section>
+
+<!-- GALERIA -->
+<section id="gallery" class="page">
+<div class="grid">
+<img src="4C53CC8C-C430-41D5-91A6-74F7D8185A2E.jpeg">
+<img src="IMG_5941.jpeg">
+<img src="IMG_0587.jpeg">
+<img src="IMG_5847.jpeg">
+</div>
 </section>
 
 </div>
@@ -311,7 +341,7 @@ document.querySelectorAll('.side-menu a').forEach(a=>a.classList.remove('active'
 document.querySelector('.side-menu a').classList.add('active');
 }
 
-/* SCRAMBLE ESTABLE */
+/* SCRAMBLE */
 const glyphs = [
 "†","‡","+","×","=","#","%","*","/","∆",
 "∴","∵","¦","|","•","·","⊕","⊗","⌘","✦"
@@ -332,7 +362,6 @@ document.getElementById("logo").innerHTML = output;
 
 if(iteration >= target.length){
 clearInterval(interval);
-document.getElementById("logo").style.fontFamily = "Garamond, serif";
 }
 
 iteration += 0.33;
