@@ -392,28 +392,52 @@ document.querySelector('.side-menu a').classList.add('active');
 }
 
 /* SCRAMBLE */
+<script>
 const glyphs = [
-"𓂀","☿","☽","☉","†","‡","✦","ᛟ","ᚨ","ᛉ",
-"✠","⚶","⌘","⟁","☍","☌","✢","✣","✥","✧"
+"†","‡","+","×","=","#","%","*","/","∆",
+"∴","∵","¦","|","•","·","⊕","⊗","⌘","✦"
 ];
 
 const target = "ABSOLUTO PROJECTS";
 let iteration = 0;
 
+const logo = document.getElementById("logo");
+
 const interval = setInterval(()=>{
-const output = target.split("").map((char,index)=>{
-if(char===" ") return " ";
-if(index < iteration) return target[index];
-return glyphs[Math.floor(Math.random()*glyphs.length)];
-}).join("");
 
-document.getElementById("logo").innerHTML = output;
+let output = "";
 
-if(iteration >= target.length) clearInterval(interval);
+target.split("").forEach((char,index)=>{
+
+let current;
+
+if(char === " "){
+current = "&nbsp;";
+}
+else if(index < iteration){
+current = target[index];
+}
+else{
+current = glyphs[Math.floor(Math.random()*glyphs.length)];
+}
+
+output += `<span style="
+display:inline-block;
+width:16px;
+text-align:center;
+">${current}</span>`;
+
+});
+
+logo.innerHTML = output;
+
+if(iteration >= target.length){
+clearInterval(interval);
+}
+
 iteration += 0.33;
 
 },70);
 </script>
-
 </body>
 </html>
