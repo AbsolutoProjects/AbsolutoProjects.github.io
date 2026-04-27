@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Este es mi texto lo puedes poner para copiarlo y pegarlo todo: <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -35,25 +35,12 @@ body{
   pointer-events:none;
 }
 
-/* LOGO INTRO */
 #logo{
-  font-family:Baskerville,"Times New Roman",serif;
+  font-family:Garamond, serif;
   font-size:16px;
   letter-spacing:4px;
-  opacity:0.95;
-
-  width:420px;
-  max-width:90vw;
-  text-align:center;
-
   white-space:nowrap;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:auto;
-
-  font-variant-ligatures:none;
-  font-feature-settings:"liga" 0;
+  opacity:0.95;
 }
 
 /* WEB */
@@ -166,20 +153,16 @@ body{
 }
 
 /* GALERIA */
-<section id="gallery" class="page">
-<div class="grid">
-<img src="4C53CC8C-C430-41D5-91A6-74F7D8185A2E.jpeg">
-<img src="IMG_5941.jpeg">
-<img src="IMG_0587.jpeg">
-<img src="IMG_5847.jpeg">
-<img src="IMG_6559.jpeg">
-<img src="edit jacket.jpeg">
-<img src="front.jpeg">
-<img src="historia (1).jpeg">
-</div>
-</section>
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+}
 
-</div>
+.grid img{
+  width:100%;
+  height:100vh;
+  object-fit:cover;
+}
 
 /* MOVIL */
 @media (max-width:700px){
@@ -187,7 +170,6 @@ body{
   #logo{
     font-size:13px;
     letter-spacing:3px;
-    width:92vw;
   }
 
   .brand{
@@ -233,7 +215,9 @@ body{
 <!-- WEB -->
 <div class="main" id="main">
 
+<!-- HEADER -->
 <div class="header">
+
 <div class="brand" onclick="showPageDirect('about')">ABSOLUTO</div>
 
 <div class="menu-btn" onclick="toggleMenu()">
@@ -241,6 +225,7 @@ body{
 <span></span>
 <span></span>
 </div>
+
 </div>
 
 <!-- MENU -->
@@ -265,8 +250,7 @@ body{
 <div class="text-box">
 La visión nace desde la reflexión sobre la muerte, el valor del tiempo y la necesidad de comunicar antes de su fin.
 
-Absoluto es, en esencia, una declaración de mi propia vida. aprendizajes, traumas, miedos e inseguridades, Es mi forma de decir “esto soy, esto descubro, a esto le temo y quiero compartirlo”.
-</div>
+Absoluto es, en esencia, una declaración de mi propia vida. aprendizajes, traumas, miedos e inseguridades, Es mi forma de decir “esto soy, esto descubro, a esto le temo y quiero compartirlo”.</div>
 </div>
 
 </section>
@@ -305,7 +289,7 @@ me da el propósito de ayudar a los demás y ver la fragilidad en los ojos de la
 </div>
 
 <div class="section-block">
-<img src="fe5c8897-5d82-4bd8-a896-7fd7dc4097b1.jpeg">
+<img src="3740d81f-5c7f-4fc8-b5da-2029c74203b7.jpeg">
 </div>
 
 <div class="text-wrap">
@@ -331,6 +315,21 @@ Cueros, material sintetico y la transformación.
 "Tan frágil termina siendo la humanidad que bajo toda tentación y circunstancia siempre elegimos amar."
 </div>
 </div>
+
+</section>
+
+<!-- GALERIA -->
+<section id="gallery" class="page">
+<div class="grid">
+<img src="4C53CC8C-C430-41D5-91A6-74F7D8185A2E.jpeg">
+<img src="IMG_5941.jpeg">
+<img src="IMG_0587.jpeg">
+<img src="IMG_5847.jpeg">
+<img src="IMG_6559.jpeg">
+<img src="edit jacket.jpeg">
+<img src="front.jpeg">
+<img src="historia (1).jpeg">
+</div>
 </section>
 
 </div>
@@ -341,7 +340,7 @@ const intro = document.querySelector(".intro");
 const main = document.getElementById("main");
 const music = document.getElementById("bgmusic");
 
-music.volume = 0.08;
+music.volume = 0.15;
 music.play();
 
 intro.classList.add("fadeout");
@@ -382,15 +381,14 @@ document.querySelector('.side-menu a').classList.add('active');
 
 /* SCRAMBLE */
 const glyphs = [
-"†","‡","+","×","=","#","%","*","/","∆",
-"∴","∵","¦","|","•","·","⊕","⊗","⌘","✦"
+"𓂀","☿","☽","☉","†","‡","✦","ᛟ","ᚨ","ᛉ",
+"✠","⚶","⌘","⟁","☍","☌","✢","✣","✥","✧"
 ];
 
 const target = "ABSOLUTO PROJECTS";
 let iteration = 0;
 
 const interval = setInterval(()=>{
-
 const output = target.split("").map((char,index)=>{
 if(char===" ") return " ";
 if(index < iteration) return target[index];
@@ -399,10 +397,7 @@ return glyphs[Math.floor(Math.random()*glyphs.length)];
 
 document.getElementById("logo").innerHTML = output;
 
-if(iteration >= target.length){
-clearInterval(interval);
-}
-
+if(iteration >= target.length) clearInterval(interval);
 iteration += 0.33;
 
 },70);
