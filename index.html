@@ -184,11 +184,11 @@ body{
   gap:20px;
 }
 
-  .section-block img,
-  .grid img{
-    height:100vh;
-  }
-
+ .section-block img{
+  width:100%;
+  height:auto; /* 🔥 clave */
+  display:block;
+}
   .grid{
     grid-template-columns:1fr;
   }
