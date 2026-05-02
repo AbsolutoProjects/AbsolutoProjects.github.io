@@ -183,15 +183,10 @@ body{
   gap:20px;
 }
 
-.section-block{
-  overflow:hidden;
-}
-
 .section-block img{
   width:100%;
-  height:100vh;
-  object-fit:cover;
-  animation:breathe 12s infinite ease-in-out;
+  height:auto; /* 🔥 clave */
+  display:block;
 }
   .grid{
     grid-template-columns:1fr;
@@ -210,11 +205,6 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-}
- @keyframes breathe{
-  0%{ transform:scale(1); }
-  50%{ transform:scale(1.03); }
-  100%{ transform:scale(1); }
 }
 </style>
 </head>
