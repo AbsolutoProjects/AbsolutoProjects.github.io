@@ -205,7 +205,29 @@ body{
   justify-content:center;
   align-items:center;
 }
- 
+
+body{
+  margin:0;
+  background:black;
+  color:white;
+}
+/* 👇 AÑADES ESTO, NO BORRAS NADA */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:999;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.015) 0px,
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+} 
 </style>
 </head>
 
