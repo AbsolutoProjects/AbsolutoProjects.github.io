@@ -11,7 +11,6 @@ body{
   background:black;
   color:white;
 }
-
 /* INTRO */
 .intro{
   position:fixed;
@@ -28,7 +27,6 @@ body{
   cursor:pointer;
   opacity:1;
   transition:opacity 1.8s ease;
-  overflow:hidden; /* 🔥 importante */
 }
 
 .intro.fadeout{
@@ -41,66 +39,21 @@ body{
   font-size:16px;
   letter-spacing:4px;
   opacity:0.95;
+
   width:420px;
   max-width:90vw;
   text-align:center;
+
   white-space:nowrap;
+
   display:flex;
   justify-content:center;
   align-items:center;
+
   margin:auto;
+
   font-variant-ligatures:none;
-  position:relative;
-  z-index:3;
 }
-
-/* ===== VHS INTRO ===== */
-
-/* CAPA VHS */
-.intro::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:2;
-
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,0.025) 0px,
-      rgba(255,255,255,0.025) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-}
-
-/* DESATURACIÓN */
-.intro #logo{
-  filter:contrast(110%) saturate(85%) brightness(0.95);
-}
-
-/* MICRO DISTORSIÓN */
-@keyframes vhsShift{
-  0%{ transform:translateX(0); }
-  98%{ transform:translateX(0); }
-  99%{ transform:translateX(1px); }
-  100%{ transform:translateX(0); }
-}
-
-/* PARPADEO */
-@keyframes vhsFlicker{
-  0%{ opacity:1; }
-  50%{ opacity:0.985; }
-  100%{ opacity:1; }
-}
-
-/* APLICACIÓN */
-.intro{
-  animation:
-    vhsShift 6s infinite,
-    vhsFlicker 3s infinite;
-}
-
 /* WEB */
 .main{
   display:none;
@@ -191,18 +144,13 @@ body{
   display:block;
 }
 
-.text-wrap{
-  padding:10px 24px;
-  gap:16px;
+  .text-wrap{
+  padding:10px 24px; /* antes 40px */
+  gap:16px; /* antes 40px */
 }
-
 .text-box{
-  font-size:12px;
-  line-height:1.8;
-  opacity:0.65;
-  text-align:center;
-  margin-bottom:20px;
-}
+  font-size:12px; line-height:1.8; opacity:0.65; text-align:center;
+  margin-bottom:20px; }
 
 /* GALERIA */
 .grid{
@@ -229,15 +177,16 @@ body{
     letter-spacing:4px;
   }
 
-  .text-wrap{
-    padding:6px 24px;
-    gap:20px;
-  }
+.text-wrap{
+  padding:6px 24px;
+  gap:20px;
+}
 
-  .section-block img{
-    height:auto;
-  }
-
+.section-block img{
+  width:100%;
+  height:auto; /* 🔥 clave */
+  display:block;
+}
   .grid{
     grid-template-columns:1fr;
   }
@@ -247,6 +196,15 @@ body{
     right:-220px;
     padding:110px 30px;
   }
+  .text-box{
+  font-size:12px;
+  line-height:1.8;
+  opacity:0.65;
+  text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 }
 </style>
 </head>
