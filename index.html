@@ -206,8 +206,15 @@ body{
   justify-content:center;
   align-items:center;
 }
-  .img{
-  filter:grayscale(15%) contrast(105%);
+ .fade{
+  opacity:0;
+  transform:translateY(20px);
+  transition:1.6s ease;
+}
+
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 </style>
 </head>
