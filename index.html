@@ -6,10 +6,18 @@
 <title>ABSOLUTO PROJECTS</title>
 
 <style>
-body{
-  margin:0;
-  background:black;
-  color:white;
+/* TEXTURA / GRANO */
+body::after{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity:0.035;
+  pointer-events:none;
+  z-index:999;
 }
 
 /* INTRO */
@@ -206,16 +214,7 @@ body{
   justify-content:center;
   align-items:center;
 }
- .fade{
-  opacity:0;
-  transform:translateY(20px);
-  transition:1.6s ease;
-}
-
-.fade.visible{
-  opacity:1;
-  transform:translateY(0);
-}
+ 
 </style>
 </head>
 
