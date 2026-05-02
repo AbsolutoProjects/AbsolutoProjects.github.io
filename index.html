@@ -205,26 +205,67 @@ body{
   justify-content:center;
   align-items:center;
 }
+  /* ===== VHS INTRO COMPLETO ===== */
 
-/* VHS OVERLAY */
-body::before{
+/* CAPA VHS (líneas) */
+.intro::before{
   content:"";
-  position:fixed;
+  position:absolute;
   inset:0;
   pointer-events:none;
-  z-index:998;
+  z-index:2;
 
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,0.04) 0px,
-      rgba(255,255,255,0.04) 1px,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
       transparent 1px,
       transparent 3px
     );
 }
 
-} 
+/* ASEGURAR CAPAS */
+.intro{
+  position:fixed;
+  overflow:hidden;
+}
+
+/* LOGO POR ENCIMA */
+#logo{
+  position:relative;
+  z-index:3;
+}
+
+/* DESATURACIÓN SOLO INTRO */
+.intro #logo{
+  filter:contrast(110%) saturate(85%) brightness(0.95);
+}
+
+/* MICRO DISTORSIÓN */
+@keyframes vhsShift{
+  0%{ transform:translateX(0); }
+  98%{ transform:translateX(0); }
+  99%{ transform:translateX(1px); }
+  100%{ transform:translateX(0); }
+}
+
+.intro{
+  animation:vhsShift 6s infinite;
+}
+
+/* PARPADEO SUAVE */
+@keyframes vhsFlicker{
+  0%{ opacity:1; }
+  50%{ opacity:0.985; }
+  100%{ opacity:1; }
+}
+
+.intro{
+  animation:
+    vhsShift 6s infinite,
+    vhsFlicker 3s infinite;
+}
 </style>
 </head>
 
